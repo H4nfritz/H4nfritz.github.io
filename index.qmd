@@ -1,0 +1,128 @@
+---
+title: "Analisis Hubungan Antara Produksi Kayu Manis Nasional dan Volume Ekspor ke Amerika Serikat Tahun 2000-2017"
+subtitle: "Metode Penelitian Politeknik APP Jakarta"
+author: "Hanfritz Azis"
+date: 2025-01-15
+number-sections: true
+format:
+  html: default
+  docx: default
+---
+
+![Politeknik APP Jakarta](poltekapp.jpg)
+
+## Pendahuluan
+
+### Latar belakang
+
+Salah satu komoditas andalan Indonesia yang tergolong ke dalam jenis rempah adalah tanaman kayu manis. Kayu manis (Cinnamon Buranii) merupakan tanaman yang kulit batang, cabang, serta dahannya dapat digunakan sebagai bahan rempah-rempah, sejauh ini sebagian besar kayu manis masih diolah dalam bentuk gulungan kering kulit pohon, di mana pemasarannya lebih banyak untuk tujuan ekspor. Sebagian besar kayu manis Indonesia dihasilkan dari provinsi-provinsi penghasil utama seperti Sumatera Barat, Jambi, dan Sumatera Utara.
+
+Sebagai salah satu penghasil kayu manis terbesar di dunia, Indonesia memiliki potensi besar untuk memenuhi permintaan global, khususnya dari negara-negara maju seperti Amerika Serikat. Amerika Serikat merupakan salah satu negara tujuan utama ekspor kayu manis Indonesia. Permintaan kayu manis di pasar Amerika terus meningkat, didorong oleh kesadaran konsumen terhadap manfaat kesehatan yang ditawarkan oleh rempah ini.
+
+Hubungan antara produksi kayu manis nasional dan volume ekspor menjadi isu penting yang perlu dianalisis. Ketika produksi kayu manis mengalami peningkatan, diharapkan ketersediaan untuk pasar ekspor juga meningkat, sehingga dapat memenuhi kebutuhan pasar global. Sebaliknya, jika terjadi penurunan produksi, maka pasokan ke pasar ekspor dapat terganggu dan menurunkan daya saing Indonesia di kancah internasional.
+
+### Ruang lingkup
+
+Penelitian ini berfokus pada analisis hubungan antara produksi Kayu manis nasional dan volume ekspor kayu manis selama periode tahun 2000 hingga 2017. Ruang lingkup penelitian mencakup dua variabel utama, yaitu ekspor kayu manis sebagai variabel dependen dan produksi kayu manis nasional sebagai variabel independen. Ekspor kayu manis diukur berdasarkan volume dan nilai ekspor tahunan, sementara produksi kayu manis nasional diukur melalui volume produksi tahunan.
+
+### Rumusan masalah
+
+1.  Bagaimana perkembangan volume ekspor kayu manis Indonesia ke Amerika Serikat selama periode 2000-2017?
+2.  Apakah terdapat hubungan yang signifikan antara produksi kayu manis nasional dan volume ekspor ke Amerika Serikat?
+
+### Tujuan dan manfaat penelitian
+
+1.  Menganalisis perkembangan volume ekspor kayu manis Indonesia ke Amerika Serikat selama periode 2000–2017.
+2.  Mengidentifikasi dan menganalisis hubungan signifikan antara produksi kayu manis nasional dan volume ekspor ke Amerika Serikat.
+
+### Package
+
+```{r}
+library('readxl')
+library('tidyverse')
+```
+
+## Studi pustaka
+
+Produksi merupakan salah satu aspek fundamental dalam aktivitas ekonomi. Secara umum, produksi adalah kegiatan untuk menciptakan barang atau jasa yang bertujuan memenuhi kebutuhan manusia. Menurut Mulyadi (2007), produksi adalah proses atau kegiatan untuk menciptakan barang atau jasa dengan mengombinasikan berbagai faktor produksi, seperti bahan baku, tenaga kerja, dan teknologi. Definisi ini menegaskan pentingnya peran berbagai elemen dalam menghasilkan produk yang bernilai guna.
+
+Ekspor adalah kegiatan ekonomi yang melibatkan pengiriman barang atau jasa dari dalam negeri ke luar negeri dengan tujuan memenuhi permintaan pasar internasional. Dalam pengertian yang lebih formal, ekspor dapat didefinisikan sebagai proses perdagangan yang dilakukan oleh suatu negara dengan cara mengeluarkan barang dari dalam wilayah pabean ke negara lain sesuai dengan ketentuan peraturan perundang-undangan yang berlaku. Menurut Undang-Undang Nomor 17 Tahun 2006 tentang Kepabeanan Pasal 1 Ayat (18), ekspor adalah kegiatan mengeluarkan barang dari dalam daerah pabean. Dalam hal ini, daerah pabean didefinisikan sebagai wilayah Republik Indonesia yang mencakup daratan, perairan, dan ruang udara, serta tempat-tempat tertentu di Zona Ekonomi Eksklusif (ZEE) dan landas kontinen yang berada di bawah yurisdiksi negara.
+
+## Metode penelitian
+
+### Data
+
+| Tahun | Ekspor | Produksi |
+|-------|--------|----------|
+| 2000  | 13698  | 45237    |
+| 2001  | 14363  | 40635    |
+| 2002  | 14191  | 45373    |
+| 2003  | 14342  | 64830    |
+| 2004  | 15501  | 99465    |
+| 2005  | 15324  | 100775   |
+| 2006  | 19251  | 94380    |
+| 2007  | 18313  | 101880   |
+| 2008  | 20732  | 102633   |
+| 2009  | 16214  | 102680   |
+| 2010  | 20738  | 88104    |
+| 2011  | 21169  | 90276    |
+| 2012  | 15341  | 89577    |
+| 2013  | 24145  | 92030    |
+| 2014  | 23541  | 91400    |
+| 2015  | 21221  | 91500    |
+| 2016  | 21593  | 91144    |
+| 2017  | 17502  | 92740    |
+
+Penelitian ini menggunakan data sekunder dengan bentuk data time series 2000-2017, data yang dipakai ialah data yang telah diolah dari Jurnal terlampir.
+
+```{r}
+setwd('C:/Metopel')
+library('readxl')
+library('tidyverse')
+dat<-read_excel('Data produksi dan ekspor kayu manis.xlsx')
+plot(dat$Y,dat$X,xlab="Produksi",ylab="Ekspor")
+```
+
+### Metode analisis
+
+Metode yang dipilih adalah regresi univariat atau Ordinary Least Square (OLS) dengan 1 variabel independen. Penelitian ini merbaksud mencari hubungan antara X dan Y. Spesifikasi yang dilakukan adalah:
+
+$$
+X=\beta_0 + \beta_1 Y+\mu
+$$ di mana X adalah Ekspor dan Y adalah Produksi.
+
+## Pembahasan
+
+### Pembahasan masalah
+```{r}
+setwd('C:/Metopel')
+library('readxl')
+library('tidyverse')
+dat<-read_excel('Data produksi dan ekspor kayu manis.xlsx')
+plot(dat$Y,dat$X,xlab="Produksi",ylab="Ekspor")
+```
+
+
+```{r}
+reg1<-lm(X~Y,data=dat)
+summary(reg1)
+```
+
+### Analisis masalah
+
+Hasil regresinya adalah
+
+```{r}
+reg1<-lm(X~Y,data=dat)
+summary(reg1)
+```
+
+Dapat dilihat dari hasil regresi diatas bahwa produksi memiliki pengaruh positif terhadap Ekspor.
+
+## Kesimpulan
+
+Berdasarkan hasil regresi tersebut dapat kita simpulkan bahwa volume produksi kayu manis cukup mempengaruhi nilai ekspor kayu manis Indonesia. Melalui hasil regeresi tersebut dapat dilihat bahwa setiap kenaikan 1 unit produksi kayu manis Indonesia akan meningkatkan ekspor ke Amerika Serikat sebesar 0.08863 unit. Hal ini dapat mengindikasikan bahwa ada hubungan positif dan signifikan antara produksi kayu manis Indonesia dengan ekspornya ke AS.
+
+## Referensi
+
+Asrini, Y. N., Hodijah, S., & Nurhayani, N. (2021). Analisis Ekspor Kayu Manis Indonesia ke Amerika Serikat. Jurnal Ekonomi Aktual, 1(1), 45–56. https://doi.org/10.53867/jea.v1i1.5
